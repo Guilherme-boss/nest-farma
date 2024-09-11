@@ -11,7 +11,6 @@ import { ConfigModule } from '@nestjs/config';
     ProdutoModule,
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'env',
     }),
     TypeOrmModule.forRootAsync({
       useClass: PostgresConfigService,

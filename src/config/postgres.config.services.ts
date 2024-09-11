@@ -10,12 +10,14 @@ export class PostgresConfigService implements TypeOrmOptionsFactory {
     return {
       type: 'postgres',
       host: this.configService.get<string>('DB_HOST'),
-      port: this.configService.get<number>('DB_PORT'),
+      port: this.configService.get<number>('DB_PORT', 5434),
       username: this.configService.get<string>('DB_USERNAME'),
       password: this.configService.get<string>('DB_PASSWORD'),
       database: this.configService.get<string>('DB_NAME'),
       entities: [],
       synchronize: true,
+      logging: true,
+      connectTimeoutMS: 30000,
     };
   }
 }

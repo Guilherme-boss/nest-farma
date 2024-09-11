@@ -18,7 +18,7 @@ import { AtualizaFuncionarioDTO } from './dto/AtualizaFuncionario.dto';
 export class FuncionarioController {
   constructor(private funcionarioRepository: FuncionarioRepository) {}
 
-  @Post()
+  @Post('/cria')
   async criaFuncionario(@Body() dadosDoFuncionario: CriaFuncionarioDTO) {
     const funcionarioEntity = new FuncionarioEntity();
     funcionarioEntity.email = dadosDoFuncionario.email;
@@ -36,7 +36,7 @@ export class FuncionarioController {
     };
   }
 
-  @Get()
+  @Get('/busca')
   async listaFuncionarios() {
     const salvos = await this.funcionarioRepository.listar();
     const funcionarioLista = salvos.map(
